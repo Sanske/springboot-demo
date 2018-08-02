@@ -1,0 +1,20 @@
+server:
+  port: 8000
+spring:
+  http:
+    converters:
+      preferred-json-mapper: jackson
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  application:
+    name: spring-demo
+  datasource:
+    url: jdbc:mysql://localhost:33066/pregrisk_test?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  type-aliases-package: com.sanske.springdemo.dao
+  mapper-locations: classpath:mapper/*.xml
