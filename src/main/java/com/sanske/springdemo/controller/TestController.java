@@ -38,7 +38,7 @@ public class TestController {
     public Result getUser(String id) {
 //        PageHelper.startPage(0, 1);
         try {
-            logger.info("test");
+            logger.info("info 日志打印！");
             List<User> data = testService.getUser(id);
 //        PageInfo<User> dataInfo = new PageInfo<>(data);
 //        System.out.println("data " + dataInfo);

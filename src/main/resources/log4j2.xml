@@ -15,11 +15,12 @@
             <TimeBasedTriggeringPolicy  interval="1" />
             <DefaultRolloverStrategy max="1"  >
                 <Delete basePath="logs" maxDepth="2">
-                    <IfFileName glob="*sanske-info.*.log" />
+                    <IfFileName glob="*khaos-info.*.log" />
                     <IfLastModified age="1h" />
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingRandomAccessFile>
+
 
         <RollingRandomAccessFile name="FILE-DEBUG" fileName="logs/sanske-debug.log"
                                  filePattern="logs/sanske-debug%d{yyyy-MM-dd-HH}.log">
@@ -62,6 +63,15 @@
     </appenders>
 
     <loggers>
+        <AsyncLogger name="RocketmqClient" level="off" additivity="false">
+            <appender-ref ref="STDOUT" />
+        </AsyncLogger>
+        <AsyncLogger name="RocketmqRemoting" level="off" additivity="false">
+            <appender-ref ref="STDOUT" />
+        </AsyncLogger>
+        <AsyncLogger name="RocketmqCommon" level="off" additivity="false">
+            <appender-ref ref="STDOUT" />
+        </AsyncLogger>
         <AsyncLogger level="debug" name="com.sanske.springdemo" additivity="false">
             <appender-ref ref="FILE-DEBUG"/>
             <appender-ref ref="STDOUT" />
