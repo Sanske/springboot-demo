@@ -11,7 +11,7 @@ spring:
   application:
     name: spring-demo
   datasource:
-    url: jdbc:mysql://localhost/pregrisk_test?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://172.16.0.10:33066/pregrisk_test?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
