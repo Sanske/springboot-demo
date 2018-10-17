@@ -1,16 +1,21 @@
 package com.sanske.springdemo.controller;
 
 import com.sanske.springdemo.common.exception.BioSanRuntimeException;
+import com.sanske.springdemo.dto.CheckDto;
 import com.sanske.springdemo.dto.User;
 import com.sanske.springdemo.common.result.Result;
 import com.sanske.springdemo.service.TestService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -52,5 +57,18 @@ public class TestController {
 
     }
 
+    @RequestMapping(value = "/checkDto", method = RequestMethod.POST)
+    public Result checkDto(String usertoken, @Valid CheckDto checkDto, BindingResult bindingResult) {
+        try {
+            if (bindingResult.hasErrors()) {
+                return Result.fail(bindingResult.getFieldError().getDefaultMessage());
+            }
+            return Result.success();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new BioSanRuntimeException("测试异常");
+        }
+
+    }
 }
 
